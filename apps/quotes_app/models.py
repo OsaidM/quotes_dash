@@ -83,6 +83,4 @@ class Quote(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now_add = True)
     objects = UserManager()
-    
-    def total_likes(self):
-        return self.user_who_like.count()
+

@@ -24,13 +24,9 @@
                 <p>"{{q.description}}"</p>
                 <h6>Posted by <a href="user_quotes/{{request.session.user_id}}">{{q.uploaded_by.first_name}} {{q.uploaded_by.last_name}}</a></h6>
                     
-                <h6>{{total_likes}} people like this</h6>
-                    
-                    
-                    
-                    
+                
+                <h6> {{q.user_who_like.all.count}} people like this</h6>
                     <a class="left btn btn-primary" href="/favorite/{{q.id}}">Like</a>
-                    
                 {%if q.uploaded_by.id == request.session.user_id %}
                     <form class="userbuttons" action="/quotes/{{q.id}}/destroy" method="POST">
                         {%csrf_token%}

@@ -149,6 +149,7 @@ def quotes_id_update(request, quote_id):
     else:
         return redirect ('/quotes')
 
+
 def favorite(request, quote_id):
     print('*'*80)
     print("in the favorite method")
