@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'quotes_app/style.css' %}">
+</head>
+<body>
+    <a href="/quotes">go back</a>
+    <div class="container">
+        <div class="title-block">
+            <h1>Welcome {{request.session.user}}</h1>
+            <a class="return" href="http://localhost:8000">Log Out</a>
+            <a class="" href="edit/{{request.session.user_id}}">Edit My Account</a>
+            <hr class="my-4">
+        </div>
+        <div class="all-books">
+            <h1>Quotes</h1>
+            {% for q in allqoutes%}
+            <div class="qoute-box">
+                <h4>{{q.author}} :</h4>
+                <p>"{{q.description}}"</p>
+                {%if thisuser == request.session.user_id %}<h6>This is one of your favorites</h6>
+                {%endif%}
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!-- 
+
+        <div class="your-books">
+            <h1>Your Favorite Books</h1>
+            {% for l in liked%}
+            <a href="books/{{l.id}}"><h4>{{l.author}}</h4></a>
+            <h6>(added by {{l.uploaded_by.first_name}} {{l.uploaded_by.last_name}})</h6>
+            {%endfor%}
+            
+        </div>
+ -->

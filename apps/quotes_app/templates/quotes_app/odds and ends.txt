@@ -1,0 +1,10 @@
+            Trying to say when to add to favorites on '/books'
+            
+            {%if b.id != l.id%}
+            <a href="http://localhost:8000/favorite/{{b.id}}"><h6>{{b.title}}Add to Favorites</h6></a>
+            {%endif%}
+
+
+
+            on books_id
+            {%else%}<a href="/favorite/{{thisbook.id}}">Add to Favorites</a>

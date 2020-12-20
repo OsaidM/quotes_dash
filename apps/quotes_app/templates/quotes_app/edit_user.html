@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'quotes_app/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="registration2">
+            <h1>Update Information</h1>
+                {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            <form action="/edit_user" method='POST'>
+            {%csrf_token%}
+                <div class="form-group">
+                    <label class="col-form-label">First Name</label>
+                    <input type="text" class="form-control col-9" name="first_name" value=''>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Last Name</label>
+                    <input type="text" class="form-control col-9" name="last_name" value=''>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Email address</label>
+                    <input type="email" class="form-control col-9" name="email" value=''>
+                </div>
+                <input type="hidden" name="thisuser" value="{{thisuser}}">
+                <button type="submit" class="btn btn-info">Update</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
